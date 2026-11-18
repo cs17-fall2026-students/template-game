@@ -1,0 +1,6 @@
+(executables
+ (public_names game - -)
+ (names play tnf ai_player)
+ (libraries src)
+ (preprocess
+  (pps ppx_expect ppx_sexp_conv)))
