@@ -1,7 +1,7 @@
 open Game_sig
 open Player_sig
 
-module Make
+module MakeReferee
     (MyGame : Game)
     (Player1 : Player with module PlayerGame = MyGame)
     (Player2 : Player with module PlayerGame = MyGame) =

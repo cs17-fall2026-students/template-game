@@ -1,6 +1,6 @@
 open Game_sig
 
-module Make (MyGame : Game) = struct
+module MakeHumanPlayer (MyGame : Game) = struct
   module PlayerGame = MyGame
 
   let get_input_line () : string =
@@ -12,7 +12,7 @@ module Make (MyGame : Game) = struct
     match get_input_line () with 
      | "exit" -> print_endline "Exiting Game REPL"; exit 0
      | input ->
-       (try MyGame.move_of_string (input, s) with
+       (try PlayerGame.move_of_string (input, s) with
         | Failure msg -> print_endline msg; next_move s)
 
   let player_name = "octopoctus"
