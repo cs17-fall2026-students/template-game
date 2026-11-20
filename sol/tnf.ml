@@ -11,13 +11,13 @@ module Tnf = struct
   [@@deriving sexp_of]
 
   let initial_state : string -> state =
-   fun s ->
+   function s ->
     let value_list = parse_input s in
     (* Your initial state, using value_list, goes here *)
     failwith "Not implemented"
 end
 
-module Game : Game = Tnf
+module TheGame : Game = Tnf
 open Tnf
 
 (* Your test cases go here! *)

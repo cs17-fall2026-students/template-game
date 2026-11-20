@@ -120,14 +120,18 @@ let check_expect_bool_option (actual, expected, message) =
 let check_expect_string_option (actual, expected, message) =
   check_expect (sexp_of_string_option, actual, expected, message)
 
+let char_list = function s -> s |> String.to_seq |> List.of_seq;;
+
 (* parse_input: converts a string of 'T', 'F', and '.' characters into a
   * list of ints where 1 represents 'T', 2 represents 'F', and 0 represents
   * '.', in the same order as the original input. *)
-let parse_input : string -> int list =
-  fun s ->
-  List.init (String.length s) (fun i ->
-      match s.[i] with
-      | '.' -> 0
-      | 'T' -> 1
-      | 'F' -> 2
+let parse_input: string -> int list = function s -> 
+  let clist = char_list s in 
+  List.map 
+    (function
+      | '.' -> 0 
+      | 'T' -> 1 
+      | 'F' -> 2 
       | _ -> failwith "invalid character in initialization string")
+      clist
+    
